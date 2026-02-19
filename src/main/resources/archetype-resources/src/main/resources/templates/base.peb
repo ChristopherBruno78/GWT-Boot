@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ request.getAttribute('_csrf').token }}"/>
+
+    {% if message is not null %}
+    <meta name="message" content="{{ message }}" />
+    {% endif %}
+
+    {% if error is not null %}
+    <meta name="error" content="{{ error }}" />
+    {% endif %}
+
+    {% block meta %}{% endblock %}
+
+    <!-- Source Sans 3 Font -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+
+    {% block stylesheets %}{% endblock %}
+
+    <title>{% block title %}  {% endblock %} </title>
+
+    <style>
+            html, body {
+                line-height: 1.6;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                margin: 0;
+                height: 100%;
+                font-size:13pt;
+                font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            }
+
+            {% block style %}
+{% endblock %}
+
+    </style>
+
+    {% block scripts %}
+{% endblock %}
+
+</head>
+<body>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

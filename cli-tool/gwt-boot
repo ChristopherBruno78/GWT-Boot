@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# GWT Boot CLI launcher script
+# This script builds and runs the Java-based GWT Boot CLI
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+JAR_FILE="$SCRIPT_DIR/target/gwt-boot-cli.jar"
+
+# Check if JAR exists, if not build it
+if [ ! -f "$JAR_FILE" ]; then
+    echo "Building GWT Boot CLI..."
+    cd "$SCRIPT_DIR" && mvn clean package -q
+    if [ $? -ne 0 ]; then
+        echo "Error: Failed to build GWT Boot CLI"
+        exit 1
+    fi
+fi
+
+# Run the CLI
+java -jar "$JAR_FILE" "$@"

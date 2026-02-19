@@ -1,0 +1,11 @@
+<module>
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="com.google.gwt.http.HTTP" />
+    <inherits name="com.google.gwt.json.JSON" />
+    <inherits name="com.cocoawerks.gwt.commons.Commons" />
+    <inherits name="elemental2.dom.Dom"/>
+
+
+    <source path="shared"/>
+
+</module>
