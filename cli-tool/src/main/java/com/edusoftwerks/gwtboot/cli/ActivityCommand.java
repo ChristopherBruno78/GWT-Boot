@@ -126,8 +126,8 @@ public class ActivityCommand implements Callable<Integer> {
                 String.format("""
                         package %s.activities.%s.client;
                         
-                        import com.google.gwt.core.client.GWT;
-                        import com.google.gwt.user.client.mvp.Presenter;
+                        import com.cocoawerks.gwt.commons.appkit.client.mvp.Presenter;
+                        import com.google.gwt.core.client.GWT; 
                         
                         public class %sPresenter extends Presenter<%sView> {
                         
@@ -145,9 +145,9 @@ public class ActivityCommand implements Callable<Integer> {
                 String.format("""
                                 package %s.activities.%s.client;
                                 
+                                import com.cocoawerks.gwt.commons.appkit.client.mvp.View;
                                 import com.google.gwt.core.client.GWT;
                                 import com.google.gwt.uibinder.client.UiBinder;
-                                import com.google.gwt.user.client.mvp.View;
                                 import com.google.gwt.user.client.ui.HTMLPanel;
                               
                                 public class %sView extends View<%sPresenter> { 
