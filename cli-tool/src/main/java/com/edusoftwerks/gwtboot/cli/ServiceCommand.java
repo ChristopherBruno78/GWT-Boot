@@ -103,6 +103,9 @@ public class ServiceCommand implements Callable<Integer> {
                                 import com.google.gwt.user.client.rpc.RemoteService;
                                 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
                                 
+                                import static com.cocoawerks.gwt.commons.appkit.client.rpc.CsrfProtectedService.csrfProtect;
+                                
+                                
                                 @RemoteServiceRelativePath("../%s/service")
                                 public interface %sService extends RemoteService {
                                 
@@ -111,9 +114,9 @@ public class ServiceCommand implements Callable<Integer> {
                                     // String exampleMethod(String parameter);
                                 
                                     class Instance {
-                                        private static final %sServiceAsync INSTANCE = GWT.create(
+                                        private static final %sServiceAsync INSTANCE = csrfProtect(GWT.create(
                                           %sService.class
-                                        );
+                                        ));
                                 
                                         public static %sServiceAsync getInstance() {
                                           return INSTANCE;
