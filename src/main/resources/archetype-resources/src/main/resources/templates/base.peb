@@ -32,9 +32,34 @@
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
                 margin: 0;
+                padding: 0;
                 height: 100%;
                 font-size:13pt;
                 font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            }
+
+            /* Loading spinner */
+            .loading-spinner {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                border: 6px solid #e0e0e0;
+                border-top-color: #007AFF;
+                animation: spinner-spin 1s linear infinite;
+                margin: auto;
+            }
+
+            @keyframes spinner-spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .loading-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
             }
 
             {% block style %}
@@ -49,6 +74,9 @@
 <body>
 
 {% block content %}
+            <div id="v-loading-spinner" class="loading-container">
+                <div class="loading-spinner"></div>
+            </div>
 {% endblock %}
 
 </body>
