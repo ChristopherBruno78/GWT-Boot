@@ -1,5 +1,6 @@
 package com.edusoftwerks.gwtboot.cli;
 
+import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -29,6 +30,13 @@ public class DevCommand implements Callable<Integer> {
             defaultValue = "2048"
     )
     private int maxMemoryMb;
+
+    @CommandLine.Parameters(
+            index = "0",
+            description = "Output directory for server JS code (default: target/classes/static)",
+            defaultValue = "target/classes/static"
+    )
+    private String launcherDir;
 
     @Override
     public Integer call() throws Exception {
@@ -82,6 +90,7 @@ public class DevCommand implements Callable<Integer> {
         }
 
         Console.info("Max heap memory: " + maxMemoryMb + "MB");
+        Console.info("Launcher directory: " + launcherDir);
         Console.info("Launching GWT CodeServer (SuperDevMode) in background...");
         Console.println("");
         Console.println("=== GWT CodeServer Output ===");
@@ -105,7 +114,7 @@ public class DevCommand implements Callable<Integer> {
         command.add("-src");
         command.add("src/main/java");
         command.add("-launcherDir");
-        command.add("target/classes/static");
+        command.add(launcherDir);
         command.add("-sourceLevel");
         command.add("17");
         command.add("-logLevel");
