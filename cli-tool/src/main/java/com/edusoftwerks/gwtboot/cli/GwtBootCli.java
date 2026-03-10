@@ -11,6 +11,7 @@ import picocli.CommandLine.Command;
   versionProvider = GwtBootCli.VersionProvider.class,
   subcommands = {
     AppCommand.class,
+    LibraryCommand.class,
     ActivityCommand.class,
     ServiceCommand.class,
     ComponentCommand.class,
@@ -48,6 +49,9 @@ public class GwtBootCli implements Callable<Integer> {
       "  app <appName>        Generate a new GWT Boot project from archetype"
     );
     Console.info(
+      "  library <libName>    Generate a new GWT library project from archetype"
+    );
+    Console.info(
       "  activity <name>      Create a new activity in the current project"
     );
     Console.info(
@@ -76,6 +80,7 @@ public class GwtBootCli implements Callable<Integer> {
     Console.info("");
     Console.info("Examples:");
     Console.info("  gwt-boot app MyApp");
+    Console.info("  gwt-boot library MyWidget");
     Console.info("  gwt-boot activity dashboard");
     Console.info("  gwt-boot service UserAuth");
     Console.info("  gwt-boot component button");

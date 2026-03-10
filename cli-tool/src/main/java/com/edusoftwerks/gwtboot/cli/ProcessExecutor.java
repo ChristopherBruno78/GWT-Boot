@@ -14,11 +14,24 @@ public class ProcessExecutor {
     String packageName
   )
     throws IOException, InterruptedException {
+    return executeMavenArchetype(
+      "gwt-boot-archetype", groupId, artifactId, version, packageName
+    );
+  }
+
+  public static int executeMavenArchetype(
+    String archetypeArtifactId,
+    String groupId,
+    String artifactId,
+    String version,
+    String packageName
+  )
+    throws IOException, InterruptedException {
     List<String> command = new ArrayList<>();
     command.add("mvn");
     command.add("archetype:generate");
     command.add("-DarchetypeGroupId=com.edusoftwerks");
-    command.add("-DarchetypeArtifactId=gwt-boot-archetype");
+    command.add("-DarchetypeArtifactId=" + archetypeArtifactId);
     command.add("-DarchetypeVersion=" + archetypeVersion);
     command.add("-DgroupId=" + groupId);
     command.add("-DartifactId=" + artifactId);

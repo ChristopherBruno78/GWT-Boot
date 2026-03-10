@@ -76,20 +76,36 @@ fi
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-# Install archetype to local Maven repository
-print_info "Installing GWT Boot archetype to Maven repository..."
+# Install app archetype to local Maven repository
+print_info "Installing GWT Boot app archetype to Maven repository..."
 echo ""
 
 (cd "$PROJECT_ROOT" && mvn clean install)
 
 if [ $? -ne 0 ]; then
     echo ""
-    print_error "Failed to install archetype to Maven repository"
+    print_error "Failed to install app archetype to Maven repository"
     exit 1
 fi
 
 echo ""
-print_success "Archetype installed to Maven repository"
+print_success "App archetype installed to Maven repository"
+echo ""
+
+# Install library archetype to local Maven repository
+print_info "Installing GWT Boot library archetype to Maven repository..."
+echo ""
+
+(cd "$PROJECT_ROOT/library-archetype" && mvn clean install)
+
+if [ $? -ne 0 ]; then
+    echo ""
+    print_error "Failed to install library archetype to Maven repository"
+    exit 1
+fi
+
+echo ""
+print_success "Library archetype installed to Maven repository"
 echo ""
 
 # Build the CLI tool
@@ -246,7 +262,8 @@ print_success "==================================="
 echo ""
 
 echo "Successfully installed:"
-echo "  - GWT Boot Archetype: ~/.m2/repository/com/edusoftwerks/gwt-boot-archetype/1.0.0/"
+echo "  - GWT Boot App Archetype: ~/.m2/repository/com/edusoftwerks/gwt-boot-archetype/1.0.0/"
+echo "  - GWT Boot Library Archetype: ~/.m2/repository/com/edusoftwerks/gwt-boot-library-archetype/1.0.0/"
 echo "  - GWT Boot CLI JAR: $LIB_DIR/gwt-boot-cli.jar"
 echo "  - GWT Boot CLI Script: $BIN_DIR/gwt-boot"
 echo ""
@@ -256,7 +273,7 @@ if [[ ":$PATH:" == *":$BIN_DIR:"* ]] || [ "$INSTALL_LOCATION" = "system-wide" ];
     echo "  gwt-boot version"
     echo ""
     echo "Get started:"
-    echo "  gwt-boot boot myapp"
+    echo "  gwt-boot app myapp"
 else
     echo "Installation successful!"
     echo "Please add $BIN_DIR to your PATH to use gwt-boot"
