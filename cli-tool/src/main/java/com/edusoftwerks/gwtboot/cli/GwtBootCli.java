@@ -15,7 +15,6 @@ import picocli.CommandLine.Command;
     ServiceCommand.class,
     ComponentCommand.class,
     DevCommand.class,
-    DesktopDevCommand.class,
     CompileCommand.class,
     JarCommand.class,
     UninstallCommand.class
@@ -58,10 +57,10 @@ public class GwtBootCli implements Callable<Integer> {
       "  component <name>     Create a new UI component in the current project"
     );
     Console.info(
-      "  dev [-m <mb>]        Launch GWT CodeServer and Spring Boot for development"
+      "  dev [-m <mb>]        Launch GWT CodeServer for development"
     );
     Console.info(
-      "  desktop-dev [-m <mb>] [-p <port>] [-r <dir>]  Launch GWT CodeServer and static file server"
+      "  dev --static-server  Launch GWT CodeServer with embedded HTTP server"
     );
     Console.info(
       "  compile [-m <mb>]    Compile all GWT modules (safari permutation only)"
@@ -82,6 +81,7 @@ public class GwtBootCli implements Callable<Integer> {
     Console.info("  gwt-boot component button");
     Console.info("  gwt-boot dev");
     Console.info("  gwt-boot dev -m 4096");
+    Console.info("  gwt-boot dev --static-server -p 3000");
     Console.info("  gwt-boot compile");
     Console.info("  gwt-boot jar");
     Console.info("");

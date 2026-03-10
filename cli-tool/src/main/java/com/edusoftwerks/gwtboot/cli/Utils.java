@@ -114,6 +114,7 @@ class Utils {
       paths
         .filter(Files::isRegularFile)
         .filter(p -> p.toString().endsWith(".gwt.xml"))
+        .filter(Utils::hasEntryPoint)
         .forEach(
           path -> {
             // Convert file path to module name
@@ -129,6 +130,15 @@ class Utils {
     }
 
     return modules;
+  }
+
+  private static boolean hasEntryPoint(Path moduleXml) {
+    try {
+      String content = Files.readString(moduleXml);
+      return content.contains("<entry-point");
+    } catch (IOException e) {
+      return false;
+    }
   }
 
   static String buildClasspath(String gwtVersion)

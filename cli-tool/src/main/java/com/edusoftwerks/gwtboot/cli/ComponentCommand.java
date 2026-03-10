@@ -89,7 +89,7 @@ public class ComponentCommand implements Callable<Integer> {
             }
             Console.println("");
 
-            if (!InputReader.confirm("Continue with generation?", false)) {
+            if (!InputReader.confirm("Continue with generation?", true)) {
                 Console.warning("Component generation cancelled.");
                 return 1;
             }

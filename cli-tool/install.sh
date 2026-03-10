@@ -49,8 +49,8 @@ echo ""
 if [ "$OS" != "windows" ]; then
     print_info "This installer will install GWT Boot CLI system-wide to /usr/local/"
     echo ""
-    read -p "Do you want to proceed with installation? (y/N): " PROCEED
-    PROCEED=${PROCEED:-n}
+    read -p "Do you want to proceed with installation? (Y/n): " PROCEED
+    PROCEED=${PROCEED:-y}
     if [ "$PROCEED" != "y" ] && [ "$PROCEED" != "Y" ]; then
         print_warning "Installation cancelled."
         exit 0
@@ -166,8 +166,8 @@ if [ "$WILL_OVERWRITE" = true ]; then
         echo "  - $file"
     done
     echo ""
-    read -p "Continue with installation? (y/N): " CONFIRM
-    CONFIRM=${CONFIRM:-n}
+    read -p "Continue with installation? (Y/n): " CONFIRM
+    CONFIRM=${CONFIRM:-y}
     if [ "$CONFIRM" != "y" ] && [ "$CONFIRM" != "Y" ]; then
         print_warning "Installation cancelled."
         exit 0

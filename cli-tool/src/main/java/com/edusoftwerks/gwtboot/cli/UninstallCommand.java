@@ -52,12 +52,7 @@ public class UninstallCommand implements Callable<Integer> {
       Console.warning(
         "This will permanently remove GWT Boot CLI from your system."
       );
-      String response = InputReader.readLine(
-        "Do you want to continue? (yes/no): "
-      );
-      if (
-        !response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("y")
-      ) {
+      if (!InputReader.confirm("Do you want to continue?", true)) {
         Console.info("Uninstall cancelled.");
         return 0;
       }
